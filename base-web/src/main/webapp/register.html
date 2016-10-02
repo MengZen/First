@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<form role="form" method="post" action="/regist">
+    <div class="form-group">
+        <label for="Inputuseraccount">帐号</label>
+        <input type="text" class="form-control" id="Inputuseraccount" placeholder="帐号" name="useraccount">
+    </div>
+    <div class="form-group">
+    <label for="leInputPassword">密码</label>
+    <input type="password" class="form-control" id="leInputPassword" placeholder="密码" name="password">
+    </div>
+    <div class="form-group">
+        <label for="InputName">用户名</label>
+        <input type="text" class="form-control" id="InputName" placeholder="用户名" name="username">
+    </div>
+    <div class="form-group">
+        <label for="InputPhone">电话</label>
+        <input type="number" class="form-control" id="InputPhone" placeholder="电话" name="phone">
+    </div>
+    <div class="form-group">
+        <label for="InputEmail">E-mail</label>
+        <input type="email" class="form-control" id="InputEmail" placeholder="E-mail" name="email">
+    </div>
+    <div class="form-group">
+        <label for="InputAddr">地址</label>
+        <input type="text" class="form-control" id="InputAddr" placeholder="地址" name="addr">
+    </div>
+    <button type="submit" class="btn btn-default">注册</button>
+
+</form>
+</body>
+</html>
