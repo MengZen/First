@@ -9,7 +9,7 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
 public class BeanFactory {
 
     public static Object getBean(String beanName) {
-        ApplicationContext ac = new FileSystemXmlApplicationContext("/base_domain/src/main/resources/applicationContext.xml");
+        ApplicationContext ac = new FileSystemXmlApplicationContext("");
         return ac.getBean(beanName);
     }
 }
