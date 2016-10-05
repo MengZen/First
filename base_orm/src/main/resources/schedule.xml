@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 命名空间mapper：com.model.professional -->
+
+<mapper namespace="cn.com.meng.base.orm.IScheduleDao">
+    <select id="load" parameterType="Integer" resultType="cn.com.meng.base.domain.Schedule">
+        <!-- 底层的SQL语句 -->
+        select * from t_sys_schedule where id= #{id,jdbcType=INTEGER}
+    </select>
+
+    <select id="count" resultType="Integer">
+        <!-- 底层的SQL语句 -->
+        select count(1) from t_sys_schedule
+    </select>
+</mapper>

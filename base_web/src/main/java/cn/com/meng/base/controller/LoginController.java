@@ -1,13 +1,19 @@
 package cn.com.meng.base.controller;
 
 import cn.com.meng.base.datahelp.DataHelp;
+import cn.com.meng.base.datahelp.MyBatisHelp;
+import cn.com.meng.base.domain.User;
+import cn.com.meng.base.orm.IUserDao;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Orion on 2016/10/1.
@@ -17,7 +23,16 @@ import java.sql.SQLException;
 public class LoginController {
 
     @RequestMapping(value = "")
-    public String index() {
+    public String index() throws IOException {
+        //3. 利用这个SqlSession获取要使用的mapper接口
+        IUserDao userDao = (IUserDao) MyBatisHelp.createMap(IUserDao.class);
+
+//        Schedule schedule = ScheduleDao.load(1);
+        Map<String, Object> queryParams = new HashMap<String, Object>();
+        queryParams.put("useraccount", "ziziziziz");
+        queryParams.put("password", "hhh");
+        User user = userDao.load(queryParams);
+        System.out.println(user.getId());
         return "index";
     }
 

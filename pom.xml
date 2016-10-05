@@ -17,17 +17,20 @@
     </modules>
 
     <dependencies>
+        <!--测试工具-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+        <!--mysql jdbc -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.6</version>
         </dependency>
+        <!--加入spring框架-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
@@ -62,11 +65,19 @@
             <artifactId>freemarker</artifactId>
             <version>2.3.22</version>
         </dependency>
+        <!--加入mybatis-->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.3.1</version>
+        </dependency>
+        <!--标签库-->
         <dependency>
             <groupId>taglibs</groupId>
             <artifactId>standard</artifactId>
             <version>1.1.2</version>
         </dependency>
+        <!--jstl-->
         <dependency>
             <groupId>jstl</groupId>
             <artifactId>jstl</artifactId>
