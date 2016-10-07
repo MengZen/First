@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 命名空间mapper：com.model.professional -->
+
+<mapper namespace="cn.com.meng.base.orm.common.IUserDao">
+    <select id="load" parameterType="Integer" resultType="cn.com.meng.base.domain.User">
+        select id,useraccount,password from t_sys_user where id=#{id,jdbcType=INTEGER}
+    </select>
+    <insert id="insert" parameterType="cn.com.meng.base.domain.User">
+        INSERT INTO t_sys_user (
+            useraccount,
+            PASSWORD,
+            username,
+            phone,
+            email,
+            addr,
+            status,
+            insman,
+            insdate
+        )
+        VALUE
+            (
+                #{useraccount,jdbcType=VARCHAR},
+                #{PASSWORD,jdbcType=VARCHAR},
+                #{username,jdbcType=VARCHAR},
+                #{phone,jdbcType=VARCHAR},
+                #{email,jdbcType=VARCHAR},
+                #{addr,jdbcType=VARCHAR},
+                #{status,jdbcType=VARCHAR},
+                #{insman,jdbcType=VARCHAR},
+                #{insdate,jdbcType=DATE}
+            )
+    </insert>
+    <select id="auth" parameterType="Map" resultType="cn.com.meng.base.domain.User">
+        <!-- 底层的SQL语句 -->
+        select id,useraccount,password from t_sys_user where useraccount= #{useraccount,jdbcType=VARCHAR} and
+        password=#{password,jdbcType=VARCHAR}
+    </select>
+</mapper>

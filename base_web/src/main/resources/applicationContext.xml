@@ -7,6 +7,29 @@
        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="locations">
+            <list>
+                <value>classpath*:*.properties</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+        <property name="properties" ref="configProperties"/>
+    </bean>
+
+    <!--配置mybatis的jdbc数据源-->
+    <bean id="jdbcDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${jdbc.driver}" />
+        <property name="url" value="${jdbc.url}" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+    </bean>
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="jdbcDataSource"/>
+        <!--指定mapper的位置，灵活使用通配符方式-->
+        <property name="mapperLocations" value="classpath:mapper/**/*.xml"></property>
+    </bean>
 
     <!-- HandlerMapping -->
     <!-- BeanNameUrlHandlerMapping：表示将请求的URL和Bean名字映射，如URL为 “上下文/hello”，则Spring配置文件必须有一个名字为“/hello”的Bean，上下文默认忽略。 -->
@@ -33,6 +56,6 @@
         <property name="contentType" value="text/html;charset=UTF-8"/>
     </bean>
 
-    <context:component-scan base-package="cn.com.meng.base.controller" use-default-filters="true"/>
+    <context:component-scan base-package="cn.com.meng.base.orm.common,cn.com.meng.base.service.common,cn.com.meng.base.controller" use-default-filters="true"/>
     <mvc:annotation-driven/>
 </beans>

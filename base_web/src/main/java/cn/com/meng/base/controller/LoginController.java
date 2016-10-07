@@ -4,6 +4,8 @@ import cn.com.meng.base.datahelp.DataHelp;
 import cn.com.meng.base.datahelp.MyBatisHelp;
 import cn.com.meng.base.domain.User;
 import cn.com.meng.base.orm.IUserDao;
+import cn.com.meng.base.service.common.IUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,17 +24,21 @@ import java.util.Map;
 @RequestMapping("/account")
 public class LoginController {
 
+    @Autowired
+    private IUserService userService;
+
     @RequestMapping(value = "")
     public String index() throws IOException {
         //3. 利用这个SqlSession获取要使用的mapper接口
-        IUserDao userDao = (IUserDao) MyBatisHelp.createMap(IUserDao.class);
+//        IUserDao userDao = (IUserDao) MyBatisHelp.createMap(IUserDao.class);
 
-//        Schedule schedule = ScheduleDao.load(1);
+////        Schedule schedule = ScheduleDao.load(1);
         Map<String, Object> queryParams = new HashMap<String, Object>();
         queryParams.put("useraccount", "ziziziziz");
         queryParams.put("password", "hhh");
-        User user = userDao.load(queryParams);
-        System.out.println(user.getId());
+//        User user = userDao.load(queryParams);
+        System.out.println(userService.auth(queryParams));
+
         return "index";
     }
 
